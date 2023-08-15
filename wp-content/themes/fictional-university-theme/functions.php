@@ -8,5 +8,9 @@ function university_files() {
 
     wp_enqueue_script('university_main_js', get_theme_file_uri('/build/index.js'), array('jquery'), '1.0', true);
 }
-
 add_action( 'wp_enqueue_scripts', 'university_files');
+
+function university_features(){
+    add_theme_support('title-tag');
+}
+add_action( 'after_setup_theme', 'university_features');
