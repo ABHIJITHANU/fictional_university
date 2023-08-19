@@ -45,6 +45,6 @@ while (have_posts()) {
       </div>
     </div>
 
-<?php
-}
+<?php }
 get_footer();
+?>
