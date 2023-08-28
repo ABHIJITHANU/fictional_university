@@ -1,0 +1,1 @@
+This folder is used to create must use plugins so that if user change the themes it does not affect the menus or admin functions related or written in files in this folder
