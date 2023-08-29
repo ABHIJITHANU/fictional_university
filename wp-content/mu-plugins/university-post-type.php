@@ -12,7 +12,7 @@ function university_post_types() {
         'supports' => [
             'title',
             'editor',
-            'excerpt'
+            'excerpt',
         ],
         'labels' => [
             'name' => 'Events',

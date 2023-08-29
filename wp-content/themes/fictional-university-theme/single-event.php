@@ -20,7 +20,10 @@ get_header();
                 <i class="fa fa-home" aria-hidden="true"></i> Event Home
             </a> 
             <span class="metabox__main">
-                <?php the_title();?>
+              <?php 
+                $eventDate = new DateTime(get_field('event_date'));
+                echo "Event Date : ".$eventDate->format('d-M-Y');
+              ?>
             </span>
           </p>
         </div>
