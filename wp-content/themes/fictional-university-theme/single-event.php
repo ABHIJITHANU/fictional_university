@@ -27,9 +27,21 @@ get_header();
             </span>
           </p>
         </div>
-        <div class="generic-content">
-            <?php the_content(); ?>
-        </div>
+        <div class="generic-content"><?php the_content(); ?></div>
+
+      <?php 
+      $relatedPrograms = get_field('related_programs');
+      if (! empty($relatedPrograms)) { 
+      ?>
+        <hr class="section-break"/>
+        <h1 class="headline headline--medium">Related Program's</h1>
+        <ul class="link-list min-list">
+          <?php foreach ($relatedPrograms as $key => $program) { ?>
+            <li><a href="<?=get_the_permalink($program); ?>"><?=get_the_title($program); ?></a></li>
+          <?php } ?>
+        </ul>
+      <?php } ?>
+
     </div>
 
 <?php }
