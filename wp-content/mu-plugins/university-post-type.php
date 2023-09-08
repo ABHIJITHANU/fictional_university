@@ -34,5 +34,22 @@ function university_post_types() {
             'singular_name' => 'Program'
         ],
     ]);
+
+    //Professor post type
+    register_post_type('professor', [
+        'has_archive' => true,
+        'rewrite' => ['slug' => 'professors'],
+        'public' => true,
+        'menu_icon' => 'dashicons-welcome-learn-more',
+        'show_in_rest' => false,
+        'supports' => ['title', 'editor', 'thumbnail'],
+        'labels' => [
+            'name' => 'Professors',
+            'add_new_item' => 'Add New Professor',
+            'edit_item' => 'Edit Professor',
+            'all_items' => 'All Professors',
+            'singular_name' => 'Professor'
+        ],
+    ]);
 }
 add_action('init', 'university_post_types');

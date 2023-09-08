@@ -29,6 +29,40 @@ get_header();
         <div class="generic-content"><?php the_content(); ?></div>
 
         <?php
+            $relatedProfessors = new WP_Query([
+              'posts_per_page' => -1,
+              'post_type' => 'professor',
+              'orderby' => 'title',
+              'order'  => 'ASC',
+              'meta_query' => [
+              [
+                'key' => 'related_programs',
+                'compare' => 'LIKE',
+                'value' => '"'.get_the_ID().'"',
+              ]
+            ]
+          ]); 
+          if ($relatedProfessors->have_posts()) {
+          ?>
+          <hr class="section-break">
+          <h2 class="headline headline--medium"><?=get_the_title();?> Professors</h2>
+          <br>
+          <ul class="professor-cards">
+            <?php
+              while($relatedProfessors->have_posts()) {
+                $relatedProfessors->the_post(); 
+            ?>
+            <li class="professor-card__list-item">
+              <a class="professor-card" href="<?php the_permalink(); ?>">
+              <img class="professor-card__image" src="<?php the_post_thumbnail_url('professorLandscape'); ?>" alt="">
+              <span class="professor-card__name"><?php the_title(); ?></span>
+              </a>
+            </li>
+            <?php } ?>
+          </ul>
+        <?php wp_reset_postdata(); } ?>
+
+        <?php
             $today = date('Ymd');
             $relatedEvents = new WP_Query([
               'posts_per_page' => 2,
